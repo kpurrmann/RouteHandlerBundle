@@ -1,0 +1,7 @@
+services:
+  PurrmannWebsolutions\RouteNoteBundle\EventListener\NoteToolbarListener:
+    class: PurrmannWebsolutions\RouteNoteBundle\EventListener\NoteToolbarListener
+    arguments:
+      - "@twig"
+    tags:
+      - { name: kernel.event_subscriber }

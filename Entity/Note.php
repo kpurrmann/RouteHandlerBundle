@@ -4,37 +4,47 @@ declare(strict_types=1);
 
 namespace PurrmannWebsolutions\RouteNoteBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Class Note
+ * @package PurrmannWebsolutions\RouteNoteBundle\Entity
+ * @copyright 2018 Kevin Purrmann
+ * @ORM\Entity(repositoryClass="PurrmannWebsolutions\RouteNoteBundle\Repository\NoteRepository")
+ * @ORM\Table(name="pws_notes")
+ */
 class Note
 {
     /**
+     * @ORM\Id()
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      * @var integer
      */
     private $id;
 
     /**
-     * @var string
-     */
-    private $route;
-
-    /**
+     * @ORM\Column(type="string", length=255, nullable=false)
      * @var string
      */
     private $uri;
 
     /**
      * @var string
+     * @ORM\Column(type="text")
      */
     private $note;
 
     /**
      * @var bool
+     * @ORM\Column(type="boolean")
      */
     private $priority = false;
 
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -52,25 +62,7 @@ class Note
     /**
      * @return string
      */
-    public function getRoute(): string
-    {
-        return $this->route;
-    }
-
-    /**
-     * @param string $route
-     * @return Note
-     */
-    public function setRoute(string $route): Note
-    {
-        $this->route = $route;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getUri(): string
+    public function getUri(): ?string
     {
         return $this->uri;
     }
@@ -88,7 +80,7 @@ class Note
     /**
      * @return string
      */
-    public function getNote(): string
+    public function getNote(): ?string
     {
         return $this->note;
     }

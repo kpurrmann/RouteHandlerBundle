@@ -1,0 +1,14 @@
+pws_routenotebundle_notes_index:
+  path: /routenoutes/list
+  methods: GET
+  defaults: {_controller: PurrmannWebsolutions\RouteNoteBundle\Controller\NoteController::index }
+
+pws_routenotebundle_notes_save:
+  path: /routenoutes/save
+  methods: POST|PUT
+  defaults: {_controller: PurrmannWebsolutions\RouteNoteBundle\Controller\NoteController::save }
+
+pws_routenotebundle_toolbar_index:
+  path: /routenoutes/toolbar
+  methods: POST
+  defaults: {_controller: PurrmannWebsolutions\RouteNoteBundle\Controller\ToolbarController::index }

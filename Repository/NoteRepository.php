@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace PurrmannWebsolutions\RouteNoteBundle\Repository;
 
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityRepository;
 use PurrmannWebsolutions\RouteNoteBundle\Entity\Note;
 
 /**
@@ -12,23 +12,8 @@ use PurrmannWebsolutions\RouteNoteBundle\Entity\Note;
  * @package PurrmannWebsolutions\RouteNoteBundle\Repository
  * @copyright 2020 Kevin Purrmann
  */
-class NoteRepository extends ServiceEntityRepository
+class NoteRepository extends EntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
-    {
-        parent::__construct($registry, Note::class);
-    }
-
-    /**
-     * findByRoute.
-     * @param string $route
-     * @return Note|null
-     */
-    public function findByRoute(string $route): ?Note
-    {
-        return $this->findOneBy(['route' => $route]);
-    }
-
     /**
      * findByUri.
      * @param string $uri

@@ -1,0 +1,12 @@
+<script type="text/javascript">/*<![CDATA[*/
+
+$.ajax({
+    url: '/app_dev.php/routenoutes/toolbar',
+    data: {'uri' : '{{ request.uri }}'},
+    method: 'POST',
+    success: function(response) {
+        $('body').append(response);
+    }
+});
+
+/*]]>*/</script>
