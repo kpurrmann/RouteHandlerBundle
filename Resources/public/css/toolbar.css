@@ -1,12 +1,12 @@
 .pws_toolbar {
-    position: absolute;
+    position: fixed;
     width: 100%;
     bottom: 0;
     left: 0;
 }
 
 .pws_toolbar.show {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 20em;
     bottom: 0;
