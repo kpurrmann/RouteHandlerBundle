@@ -46,23 +46,23 @@ class NoteToolbarListener implements EventSubscriberInterface
 
     protected function injectToolbar(Response $response, Request $request): void
     {
-        $content = $response->getContent();
-        $pos = strripos($content, '</body>');
-
-        if (false !== $pos) {
-            $toolbar = "\n" . str_replace(
-                    "\n",
-                    '',
-                    $this->twig->render(
-                        '@PurrmannWebsolutionsRouteNote/toolbar/init.js.twig',
-                        [
-                            'request' => $request,
-                            'uri' => $this->urlGenerator->generate('pws_routenotebundle_toolbar_index')
-                        ]
-                    )
-                ) . "\n";
-            $content = substr($content, 0, $pos) . $toolbar . substr($content, $pos);
-            $response->setContent($content);
+        if ($content = $response->getContent()) {
+            $pos = strripos($content, '</body>');
+            if (false !== $pos) {
+                $toolbar = "\n" . str_replace(
+                        "\n",
+                        '',
+                        $this->twig->render(
+                            '@PurrmannWebsolutionsRouteNote/toolbar/init.js.twig',
+                            [
+                                'request' => $request,
+                                'uri' => $this->urlGenerator->generate('pws_routenotebundle_toolbar_index')
+                            ]
+                        )
+                    ) . "\n";
+                $content = substr($content, 0, $pos) . $toolbar . substr($content, $pos);
+                $response->setContent($content);
+            }
         }
     }
 
