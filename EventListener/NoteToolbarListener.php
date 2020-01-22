@@ -11,6 +11,7 @@ use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Symfony\Component\HttpKernel\Event\KernelEvent;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig\Environment;
 
 class NoteToolbarListener implements EventSubscriberInterface
@@ -20,10 +21,15 @@ class NoteToolbarListener implements EventSubscriberInterface
      * @var Environment
      */
     private $twig;
+    /**
+     * @var UrlGeneratorInterface
+     */
+    private $urlGenerator;
 
-    public function __construct(Environment $twig)
+    public function __construct(Environment $twig, UrlGeneratorInterface $urlGenerator)
     {
         $this->twig = $twig;
+        $this->urlGenerator = $urlGenerator;
     }
 
     public function onKernelResponse(FilterResponseEvent $event): void
@@ -49,7 +55,10 @@ class NoteToolbarListener implements EventSubscriberInterface
                     '',
                     $this->twig->render(
                         '@PurrmannWebsolutionsRouteNote/toolbar/init.js.twig',
-                        ['request' => $request]
+                        [
+                            'request' => $request,
+                            'uri' => $this->urlGenerator->generate('pws_routenotebundle_toolbar_index')
+                        ]
                     )
                 ) . "\n";
             $content = substr($content, 0, $pos) . $toolbar . substr($content, $pos);

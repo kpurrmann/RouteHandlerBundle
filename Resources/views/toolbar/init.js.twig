@@ -1,7 +1,7 @@
 <script type="text/javascript">/*<![CDATA[*/
 
-$.ajax({
-    url: '/app_dev.php/routenoutes/toolbar',
+jQuery.ajax({
+    url: '{{ uri }}',
     data: {'uri' : '{{ request.pathInfo }}'},
     method: 'POST',
     success: function(response) {

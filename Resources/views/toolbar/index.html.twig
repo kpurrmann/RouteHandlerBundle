@@ -26,24 +26,24 @@
 
 <script type="text/javascript">
 
-    let form = $('form[name=note_route_form]');
-    let toolbar = $('.pws_toolbar');
+    let form = jQuery('form[name=note_route_form]');
+    let toolbar = jQuery('.pws_toolbar');
 
     $('.toolbar_toggle').on('click', function () {
         toolbar.toggleClass('show');
     });
 
     form.on('change keyup paste', function () {
-        $(this).find('input[type=submit]').removeAttr('disabled');
+        jQuery(this).find('input[type=submit]').removeAttr('disabled');
     });
 
 
     form.submit(function (e) {
         e.preventDefault();
-        $.ajax({
-            url: $(this).attr('action'),
+        jQuery.ajax({
+            url: jQuery(this).attr('action'),
             type: "post",
-            data: $(this).serialize(),
+            data: jQuery(this).serialize(),
             success: function (response) {
                 form.find('input[type=submit]').attr('disabled', 'disabled');
 
