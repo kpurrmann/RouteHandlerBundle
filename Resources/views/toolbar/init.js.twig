@@ -5,7 +5,7 @@ jQuery.ajax({
     data: {'uri' : '{{ request.pathInfo }}'},
     method: 'POST',
     success: function(response) {
-        $('body').append(response);
+        jQuery('body').append(response);
     }
 });
 
