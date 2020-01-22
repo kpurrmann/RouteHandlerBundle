@@ -27,6 +27,13 @@
     width: 10em;
     height: 2em;
     cursor: pointer;
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+    border-top: 1px solid #eeeeee;
+    border-left: 1px solid #eeeeee;
+    border-right: 1px solid #eeeeee;
+    background: #fff;
+    padding: 5px 5px 5px 20px;
 }
 
 

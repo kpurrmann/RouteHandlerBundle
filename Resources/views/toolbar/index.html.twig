@@ -1,8 +1,8 @@
 {% trans_default_domain 'PurrmannWebsolutionsRouteNote' %}
 
-<div class="pws_toolbar panel panel-{{ (note.priority) ? 'danger show' : 'default' }}">
+<div class="pws_toolbar panel panel-{{ (note.priority) ? 'danger show' : 'default' }} card card-{{ (note.priority) ? 'danger show' : 'default' }}">
     <div class="toolbar_content">
-        <div class="panel-body">
+        <div class="panel-body card-body">
             {{ form_start(noteForm) }}
             <div class="form-row">
                 <div class="col-sm-6">
