@@ -1,0 +1,42 @@
+.pws_toolbar {
+    position: fixed !important;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+
+.pws_toolbar.show {
+    position: fixed;
+    width: 100%;
+    height: 20em;
+    bottom: 0;
+}
+
+.pws_toolbar.show .glyphicon-arrow-up {
+    transform: rotate(180deg);
+}
+
+.pws_toolbar .toolbar_content {
+    display: none;
+}
+
+.pws_toolbar .toolbar_toggle {
+    position: absolute;
+    top: -2em;
+    left: 0;
+    width: 10em;
+    height: 2em;
+    cursor: pointer;
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+    border-top: 1px solid #eeeeee;
+    border-left: 1px solid #eeeeee;
+    border-right: 1px solid #eeeeee;
+    background: #fff;
+    padding: 5px 5px 5px 20px;
+}
+
+
+.pws_toolbar.show .toolbar_content {
+    display: block;
+}

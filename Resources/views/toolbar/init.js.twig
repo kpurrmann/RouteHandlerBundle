@@ -1,0 +1,12 @@
+<script type="text/javascript">/*<![CDATA[*/
+
+jQuery.ajax({
+    url: '{{ uri }}',
+    data: {'uri' : '{{ request.pathInfo }}'},
+    method: 'POST',
+    success: function(response) {
+        jQuery('body').append(response);
+    }
+});
+
+/*]]>*/</script>

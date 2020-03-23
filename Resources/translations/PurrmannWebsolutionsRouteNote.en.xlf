@@ -4,16 +4,16 @@
         <body>
             <trans-unit id="1">
                 <source>pws.routenotebundle.note.priority</source>
-                <target>Priorität</target>
+                <target>Priority</target>
             </trans-unit>
 
             <trans-unit id="2">
                 <source>pws.routenotebundle.note.note</source>
-                <target>Notiz</target>
+                <target>Note</target>
             </trans-unit>
             <trans-unit id="3">
                 <source>pws.routenotebundle.note</source>
-                <target>Notiz</target>
+                <target>Notes</target>
             </trans-unit>
         </body>
     </file>

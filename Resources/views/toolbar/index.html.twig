@@ -1,0 +1,64 @@
+{% trans_default_domain 'PurrmannWebsolutionsRouteNote' %}
+
+<div class="pws_toolbar panel panel-{{ (note.priority) ? 'danger show' : 'default' }} card card-{{ (note.priority) ? 'danger show' : 'default' }}">
+    <div class="toolbar_content">
+        <div class="panel-body card-body">
+            {{ form_start(noteForm) }}
+            <div class="form-row">
+                <div class="col-sm-6">
+                    {{ form_widget(noteForm.note) }}
+                </div>
+                <div class="col-sm-1">
+                    {{ form_widget(noteForm.priority) }}
+                </div>
+                <div class="col-sm-2">
+                    <input type="submit" class="btn btn-primary" disabled>
+                </div>
+            </div>
+            {{ form_rest(noteForm) }}
+            {{ form_end(noteForm) }}
+        </div>
+    </div>
+    <div class="toolbar_toggle panel-heading">
+        <p class="panel-title">{{ "pws.routenotebundle.note"|trans }} <span class="glyphicon glyphicon-arrow-up"></span></p>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    let form = jQuery('form[name=note_route_form]');
+    let toolbar = jQuery('.pws_toolbar');
+
+    jQuery('.toolbar_toggle').on('click', function () {
+        toolbar.toggleClass('show');
+    });
+
+    form.on('change keyup paste', function () {
+        jQuery(this).find('input[type=submit]').removeAttr('disabled');
+    });
+
+
+    form.submit(function (e) {
+        e.preventDefault();
+        jQuery.ajax({
+            url: jQuery(this).attr('action'),
+            type: "post",
+            data: jQuery(this).serialize(),
+            success: function (response) {
+                form.find('input[type=submit]').attr('disabled', 'disabled');
+
+                if (response.note.priority) {
+                    toolbar.addClass('panel-danger');
+                    toolbar.removeClass('panel-default');
+                } else {
+                    toolbar.addClass('panel-default');
+                    toolbar.removeClass('panel-danger');
+                }
+
+            },
+            error: function (xhr, status, error) {
+                console.log(xhr.responseText);
+            }
+        });
+    });
+</script>
